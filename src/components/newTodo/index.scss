@@ -1,0 +1,282 @@
+#newTodoDom{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        margin-top: 60px;
+        width: 100%;
+        font-size: 100px;
+        font-weight: 100;
+        text-align: center;
+        color: rgba(175, 47, 47, 0.15);
+        text-rendering: optimizeLegibility;
+    }
+    #btnContainer{
+        width: 550px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 30px;
+        .dbBtn{
+            cursor: pointer;
+            width: 100px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+        }
+        .dbBtn:hover{
+            text-decoration: underline;
+            color: skyblue;
+        }
+    }
+    #searchDom{
+        width: 550px;
+        margin-top: 30px;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        #search{
+            width: 200px;
+            height: 30px;
+            line-height: 300px;
+            padding-left: 10px;
+            border: 1px solid rgba($color: black, $alpha: 0.2);
+        }
+        #searchImg{
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border: 1px inset rgba($color: black, $alpha: 0.2);
+            background-image: url('../../assets//image/search.png');
+            display: inline-block;
+        }
+        #searchImg:hover{
+            background-color: rgba($color: black, $alpha: 0.1);
+        }
+    }
+    #newListDom{
+        width: 550px;
+        position: relative;
+        .toogle-all{
+            height: 0;
+            width: 0;
+            margin-top: 30px;
+            display: none;
+        }
+        #toogleAllLabel{
+            position: absolute;
+            margin-top: 30px;
+            height: 30px;
+            width: 30px;
+            font-size: 30px;
+            line-height: 30px;
+            top: 25px;
+            left: 15px;
+            opacity: 0.2;
+            transform: rotate(90deg);
+        }
+        .toogle-all:checked+#toogleAllLabel{
+            opacity: 1;
+        }
+        .new-todo-input{
+            font-family: -apple-system, BlinkMacSystemFont,
+            "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+            "Fira Sans", "Droid Sans", "Helvetica Neue",
+            sans-serif;
+            margin-top: 30px;
+            width: 550px;
+            font-size: 24px;
+            font-weight: 100;
+            color: #4d4d4d;
+            line-height: 1.4em;
+            border: 0;
+            box-shadow: 0 -1px 20px 0 rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+            padding: 16px 16px 16px 60px;
+            background: rgba(0, 0, 0, 0.003);
+            border-bottom: 1px solid #ededed;
+        }
+        ::-webkit-input-placeholder{ /* WebKit, Blink, Edge */
+            color: rgba($color: #4d4d4d, $alpha: 0.5);
+            font-size: 20px;
+            font-style: italic;
+            font-weight: 100;
+        }
+    }
+    ul{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        .hide{
+            display: none;
+        }
+        li{
+            position: relative;
+            font-size: 24px;
+            font-weight: 100;
+            color: #4d4d4d;
+            border-bottom: 1px solid #ededed;
+            box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.1), -5px 5px 10px 0 rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            .edit{
+                display: none;
+            }
+            .listView{
+                width: 550px;
+                background: rgb(255, 255, 255);
+                .searchItem{
+                    background-color: skyblue;
+                }
+                .toogle{
+                    position: absolute;
+                    height: 0;
+                    width: 0;
+                    top: 0;
+                    left: 0;
+                }
+                .toogle:before{
+                    content: "";
+                    background-color: #fff;
+                    position: absolute;
+                    top: 14px;
+                    left: 15px;
+                    display: block;
+                    box-sizing: border-box;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    border: 1px solid rgba(0, 0, 0, 0.2);
+                    cursor: pointer;
+                }
+                .toogle:checked:before{
+                    content: "";
+                    background-color: #fff;
+                    position: absolute;
+                    top: 14px;
+                    left: 15px;
+                    display: block;
+                    box-sizing: border-box;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    border: 1px solid rgb(46, 179, 19);
+                    cursor: pointer;
+                }
+                .toogle:checked:after{
+                    content: "";
+                    background-color: #fff;
+                    position: absolute;
+                    width: 10px;
+                    height: 16px;
+                    display: block;
+                    box-sizing: border-box;
+                    border-right: 1px solid rgb(46, 179, 19);
+                    border-bottom: 1px solid rgb(46, 179, 19);
+                    top: 18px;
+                    left: 25px;
+                    transform: rotate(45deg);
+                    cursor: pointer;
+                }
+                .toogle:checked+label{
+                    text-decoration: line-through;
+                    color: #d9d9d9;
+                }
+                label{
+                    display: block;
+                    font-size: 24px;
+                    padding: 15px 15px 15px 60px;
+                    word-break: break-all;
+                }
+                .destroy{
+                    display: none;
+                }
+                label:hover+.destroy, .destroy:hover{
+                    background-color: #fff;
+                    position: absolute;
+                    top: 14px;
+                    right: 15px;
+                    display: block;
+                    box-sizing: border-box;
+                    width: 31px;
+                    height: 31px;
+                    cursor: pointer;
+                    border: none;
+                }
+                .destroy:focus{
+                    outline: 0;
+                }
+                .destroy::before{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    width: 1px;
+                    height: 15px;
+                    right: 14px;
+                    top: 7px;
+                    box-sizing: border-box;
+                    background-color: rgba(175, 47, 47, 0.5);
+                    transform: rotate(45deg);
+                }
+                .destroy::after{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    width: 15px;
+                    height: 1px;
+                    right: 7px;
+                    top: 14px;
+                    box-sizing: border-box;
+                    background-color: rgba(175, 47, 47, 0.5);
+                    transform: rotate(45deg);
+                }
+            }
+        }
+        .editing{
+            .listView{
+                display: none;
+            }
+            .edit{
+                width: 550px;
+                background: rgb(255, 255, 255);
+                height: 56px;
+                outline: black solid 1px;
+                display: block;
+                font-size: 24px;
+            }
+        }
+    }
+    #listFooter{
+        box-sizing: border-box;
+        position: relative;
+        z-index: 12;
+        width: 550px;
+        color: #777;
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-around;
+        border-bottom: 1px solid #ededed;
+        box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1),5px 5px 10px 0 rgba(0, 0, 0, 0.1), -5px 5px 10px 0 rgba(0, 0, 0, 0.1);
+        background: rgb(255, 255, 255);
+        a:hover{
+            cursor: pointer;
+            box-sizing: border-box;
+            outline: rgba($color: black, $alpha: 0.2) solid 1px;
+        }
+        a.nowStatus{
+            color: skyblue;
+        }
+        #footerLeft{
+            width: 100px;
+        }
+        #footerMid{
+            width: 200px;
+            display: flex;
+            justify-content: space-around;
+        }
+        #footerRight{
+            width: 120px;
+        }
+    }
+}
